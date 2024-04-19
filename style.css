@@ -1,0 +1,228 @@
+/* Reset default styles and box-sizing for consistency */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a dark theme background to match the brick wall neon image */
+body {
+    font-family: 'Roboto', sans-serif; /* Updated font family */
+    line-height: 1.6;
+    color: #f1f1f1;
+    background-color: #1a1a1a;
+    background-image: url('./pic1.jpg'); /* The brick wall image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 60px;
+    scroll-behavior: smooth;
+}
+
+/* Style the header with a background image, central alignment, and neon effects */
+header {
+    font-family: 'Poppins', sans-serif;
+    height: 50vh;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Adjust header text styling with neon glow animation */
+header h1 {
+    color: #fff;
+    font-size: 4rem;
+    animation: neon-text-glow 1.5s ease-in-out infinite alternate;
+}
+
+header h2 {
+    color: #ccc;
+    font-size: 2rem;
+    animation: neon-text-glow 1.5s ease-in-out infinite alternate;
+}
+
+/* Sticky navbar with subtle shadow */
+nav {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Changed for mobile-first design */
+    text-align: center; /* Align text for mobile */
+}
+
+nav ul li {
+    padding: 10px; /* Adjusted padding for mobile */
+}
+
+nav a {
+    color: #39ff14; /* Bright neon green color */
+    text-decoration: none;
+    animation: neon-text-flicker 1.5s infinite;
+}
+
+/* Media query for tablets and larger devices */
+@media (min-width: 768px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        text-align: left; /* Text align left for larger devices */
+    }
+
+    nav ul li {
+        padding: 0 20px;
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* Single column layout for medium devices */
+    }
+
+    header h1 {
+        font-size: 4rem; /* Larger font size for tablets and desktops */
+    }
+
+    header h2 {
+        font-size: 2rem; /* Standard font size for tablets and desktops */
+    }
+}
+
+/* Larger desktops */
+@media (min-width: 992px) {
+    header {
+        height: 60vh; /* Larger viewport height for large screens */
+    }
+
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens */
+    }
+}
+
+/* Neon text glow and flicker animations */
+@keyframes neon-text-glow {
+    0%, 100% {
+        text-shadow:
+            0 0 6px rgba(255, 255, 255, 0.92),
+            0 0 30px rgba(255, 255, 255, 0.34),
+            0 0 12px rgba(255, 255, 255, 0.52),
+            0 0 22px rgba(255, 255, 255, 0.48),
+            0 0 34px rgba(255, 255, 255, 0.5),
+            0 0 54px rgba(255, 255, 255, 0.7);
+    }
+    50% {
+        text-shadow:
+            0 0 6px rgba(255, 255, 255, 0.98),
+            0 0 30px rgba(255, 255, 255, 0.42),
+            0 0 12px rgba(255, 255, 255, 0.58),
+            0 0 22px rgba(255, 255, 255, 0.84),
+            0 0 34px rgba(255, 255, 255, 0.76),
+            0 0 54px rgba(255, 255, 255, 0.9);
+    }
+}
+
+@keyframes neon-text-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        text-shadow:
+            0 0 4px #39ff14,
+            0 0 11px #39ff14,
+            0 0 19px #39ff14,
+            0 0 40px #39ff14,
+            0 0 80px #39ff14,
+            0 0 90px #39ff14,
+            0 0 100px #39ff14,
+            0 0 150px #39ff14;
+    }
+    20%, 24%, 55% {
+        opacity: 0.6;
+        text-shadow: none;
+    }
+}
+
+/* Card-like sections for content */
+.container {
+    display: grid;
+    gap: 20px;
+    padding: 4rem;
+}
+
+.container section {
+    background: #252525;
+    border-radius: 8px;
+    padding: 20px;
+    color: #d1d1d1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation: neon-border-flicker 3s infinite;
+}
+
+/* Neon border flicker animation */
+@keyframes neon-border-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        border: 1px solid #39ff14;
+        box-shadow:
+            0 0 4px #39ff14,
+            0 0 11px #39ff14,
+            0 0 19px #39ff14,
+            0 0 40px #39ff14;
+    }
+    20%, 24%, 55% {
+        border: 1px solid rgba(57, 255, 20, 0.1);
+        box-shadow: none;
+    }
+}
+
+/* Footer styling */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #bbdefb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    mix-blend-mode: difference;
+}
+
+footer a:hover {
+    color: black;
+    background-color: #ffffff;
+}
+
+/* Specific GitHub star hover effect */
+.link-github svg {
+    fill: #ffffff; /* Initial color is white */
+    transition: fill 0.3s ease;
+}
+
+.link-github:hover svg {
+    fill: #39ff14; /* Change to neon green on hover */
+    text-shadow:
+        0 0 4px #39ff14,
+        0 0 11px #39ff14,
+        0 0 19px #39ff14,
+        0 0 40px #39ff14,
+        0 0 80px #39ff14,
+        0 0 90px #39ff14,
+        0 0 100px #39ff14,
+        0 0 150px #39ff14; /* Adding a glowing neon effect */
+}
