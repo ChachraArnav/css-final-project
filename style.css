@@ -1,27 +1,33 @@
-/* Reset default styles and box-sizing for consistency */
+/* Import Lato Font directly in CSS for better control and diversity in font weights */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+/* Importing fonts and setting base styles */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Merriweather:wght@400;700&family=Fira+Sans:wght@400;700&family=Work+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap');
+
+
+/* Reset default styles and box-sizing for a consistent styling environment */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Apply a dark theme background to match the brick wall neon image */
+/* General body styles with a responsive and aesthetically pleasing background */
 body {
-    font-family: 'Roboto', sans-serif; /* Updated font family */
+    font-family: 'Lato', sans-serif; /* Default font set for overall document readability */
     line-height: 1.6;
     color: #f1f1f1;
     background-color: #1a1a1a;
-    background-image: url('./pic1.jpg'); /* The brick wall image */
+    background-image: url('./pic1.jpg'); /* Background image, ensure path correctness */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding-top: 60px;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
-/* Style the header with a background image, central alignment, and neon effects */
+/* Header styling focused on visual impact and central alignment */
 header {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Lato', sans-serif; /* Consistent font for branding */
     height: 50vh;
     background: transparent;
     display: flex;
@@ -30,88 +36,21 @@ header {
     justify-content: center;
     text-align: center;
     position: relative;
+    animation: neon-text-glow 1.5s ease-in-out infinite alternate; /* Neon glow for dynamic appearance */
 }
 
-/* Adjust header text styling with neon glow animation */
-header h1 {
-    color: #fff;
-    font-size: 4rem;
-    animation: neon-text-glow 1.5s ease-in-out infinite alternate;
+/* Header title and subtitle with responsive typography */
+header h1, header h2 {
+    color: #fff; /* White color for contrast */
+    font-size: 4rem; /* Large font size for title */
 }
 
 header h2 {
-    color: #ccc;
-    font-size: 2rem;
-    animation: neon-text-glow 1.5s ease-in-out infinite alternate;
+    font-size: 2rem; /* Smaller font size for subtitle */
+    color: #ccc; /* Lighter shade for subtitle */
 }
 
-/* Sticky navbar with subtle shadow */
-nav {
-    background-color: rgba(0, 0, 0, 0.85);
-    color: #fff;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-direction: column; /* Changed for mobile-first design */
-    text-align: center; /* Align text for mobile */
-}
-
-nav ul li {
-    padding: 10px; /* Adjusted padding for mobile */
-}
-
-nav a {
-    color: #39ff14; /* Bright neon green color */
-    text-decoration: none;
-    animation: neon-text-flicker 1.5s infinite;
-}
-
-/* Media query for tablets and larger devices */
-@media (min-width: 768px) {
-    nav ul {
-        flex-direction: row;
-        justify-content: center;
-        text-align: left; /* Text align left for larger devices */
-    }
-
-    nav ul li {
-        padding: 0 20px;
-    }
-
-    .container {
-        grid-template-columns: 1fr; /* Single column layout for medium devices */
-    }
-
-    header h1 {
-        font-size: 4rem; /* Larger font size for tablets and desktops */
-    }
-
-    header h2 {
-        font-size: 2rem; /* Standard font size for tablets and desktops */
-    }
-}
-
-/* Larger desktops */
-@media (min-width: 992px) {
-    header {
-        height: 60vh; /* Larger viewport height for large screens */
-    }
-
-    .container {
-        grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens */
-    }
-}
-
-/* Neon text glow and flicker animations */
+/* Animation keyframes for neon glow effect on text */
 @keyframes neon-text-glow {
     0%, 100% {
         text-shadow:
@@ -133,6 +72,244 @@ nav a {
     }
 }
 
+/* Responsive and visually appealing navigation bar */
+nav {
+    background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent black background */
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Center navigation items horizontally */
+}
+
+nav ul li {
+    padding: 0 20px; /* Spacing between navigation items */
+}
+
+nav a {
+    color: #39ff14; /* Bright neon green for links */
+    text-decoration: none;
+    font-size: 16px; /* Responsive font size for navigation links */
+    animation: neon-text-flicker 1.5s infinite; /* Flicker effect for dynamic feel */
+}
+
+/* Animation keyframes for neon flicker effect on navigation links */
+@keyframes neon-text-flicker {
+    from, to {
+        text-shadow: 0 0 4px #39ff14, 0 0 11px #39ff14, 0 0 19px #39ff14, 0 0 40px #39ff14;
+    }
+    20%, 24%, 55% {
+        opacity: 0.6;
+        text-shadow: none;
+    }
+}
+
+/* Grid layout for main content containers with responsive design */
+.container {
+    display: grid;
+    gap: 20px;
+    padding: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* Section-specific styles with neon border flicker for visual enhancement */
+.container section {
+    background: #252525; /* Dark background for sections */
+    border-radius: 8px; /* Rounded corners for aesthetic */
+    padding: 20px; /* Padding for content spacing */
+    color: #d1d1d1; /* Light grey text for readability */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    animation: neon-border-flicker 3s infinite; /* Continuous neon flicker effect */
+}
+
+/* Keyframes for neon border flicker effect */
+@keyframes neon-border-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        border: 1px solid #39ff14; /* Solid neon border with glow */
+        box-shadow:
+            0 0 4px #39ff14,
+            0 0 11px #39ff14,
+            0 0 19px #39ff14,
+            0 0 40px #39ff14;
+    }
+    20%, 24%, 55% {
+        border: 1px solid rgba(57, 255, 20, 0.1); /* Fade effect for flicker */
+        box-shadow: none;
+    }
+}
+
+/* Footer styling with consistent visual theme and responsiveness */
+footer {
+    background-color: #000; /* Black background for footer */
+    color: #fff; /* White text for contrast */
+    padding: 2rem 0; /* Padding for separation from content */
+    text-align: center; /* Centered text alignment */
+    position: relative;
+    width: 100%; /* Full width */
+}
+
+footer a {
+    color: #bbdefb; /* Soft blue links for visual appeal */
+    text-decoration: none; /* No underline for a clean look */
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+footer a:hover {
+    color: black; /* Dark color on hover for visibility */
+    background-color: #ffffff; /* White background on hover for contrast */
+}
+
+/* Styling for GitHub link with centralized icon and hover effects */
+.link-github {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center icon and text vertically */
+}
+
+.link-github svg {
+    fill: #ffffff; /* White icon */
+    transition: fill 0.3s ease; /* Smooth fill transition on hover */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.link-github:hover svg {
+    fill: #39ff14; /* Neon green on hover */
+    text-shadow:
+        0 0 4px #39ff14,
+        0 0 11px #39ff14,
+        0 0 19px #39ff14,
+        0 0 40px #39ff14; /* Neon glow effect on hover */
+}
+/* Importing multiple fonts for specific sections */
+
+/* Reset default styles and box-sizing for consistency */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif; /* Default font for overall consistency */
+    line-height: 1.6;
+    color: #f1f1f1;
+    background-color: #1a1a1a;
+    background-image: url('./pic1.jpg'); /* Ensure the correct path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 60px;
+    scroll-behavior: smooth;
+}
+
+/* Header uses Montserrat for a bold, modern look */
+header {
+    font-family: 'Lato', sans-serif; /* Consistent web font */
+}
+
+/* Styling navigation with Roboto for a clean, neutral appearance */
+nav {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    padding: 0 20px;
+}
+
+nav a {
+    color: #39ff14; /* Bright neon green color */
+    text-decoration: none;
+    font-size: 16px; /* Responsive font size */
+}
+
+/* Applying different fonts to different content sections */
+/* Guidelines section with Merriweather for a serious, authoritative look */
+#guidelines {
+    font-family: 'Merriweather', serif; /* For formal, authoritative text */
+}
+
+/* Modern CSS section with Fira Sans for a modern, clean look */
+.container article:nth-of-type(1) section:nth-of-type(2) {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+/* Contribute section with Work Sans for a friendly, approachable look */
+#contribute {
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* Steps to Contribute with Raleway for clarity and professionalism */
+#contribute section:nth-of-type(2) {
+    font-family: 'Raleway', sans-serif;
+}
+
+
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+footer a {
+    color: #bbdefb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: black;
+    background-color: #ffffff;
+}
+/* Styling for the 'Currently Staged Style' section with neon effects */
+aside.profile {
+    background-color: #1a1a1a; /* Dark background for consistency with the body */
+    color: #fff; /* White text for better visibility */
+    padding: 20px; /* Padding for spacing */
+    margin-top: 20px; /* Margin for separation from main content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    border-radius: 8px; /* Rounded corners for a polished look */
+}
+
+/* Applying neon glow to titles within the 'Currently Staged Style' section */
+aside.profile h4 {
+    font-size: 1.5rem; /* Larger font size for headings */
+    animation: neon-text-glow 1.5s ease-in-out infinite alternate; /* Neon glow animation for dynamic effect */
+}
+
+/* Enhance links with neon effects for consistency */
+aside.profile a {
+    color: #39ff14; /* Bright neon green color */
+    text-decoration: none; /* Remove underline */
+    animation: neon-text-flicker 1.5s infinite; /* Neon flicker effect for links */
+}
+
+/* Keyframes for neon text flicker effect used in links */
 @keyframes neon-text-flicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         opacity: 1;
@@ -151,78 +328,80 @@ nav a {
         text-shadow: none;
     }
 }
-
-/* Card-like sections for content */
-.container {
-    display: grid;
-    gap: 20px;
-    padding: 4rem;
+/* Styling for the 'Featured Styles' section with neon effects */
+aside#styles {
+    background-color: #1a1a1a; /* Dark background for consistency with the body */
+    color: #fff; /* White text for better visibility */
+    padding: 20px; /* Padding for spacing */
+    margin-top: 20px; /* Margin for separation from main content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    border-radius: 8px; /* Rounded corners for a polished look */
 }
 
-.container section {
-    background: #252525;
-    border-radius: 8px;
-    padding: 20px;
-    color: #d1d1d1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    position: relative;
-    animation: neon-border-flicker 3s infinite;
+/* Applying neon glow to titles within the 'Featured Styles' section */
+aside#styles h2 {
+    font-size: 1.75rem; /* Slightly larger font size for headings */
+    animation: neon-text-glow 1.5s ease-in-out infinite alternate; /* Neon glow animation for dynamic effect */
 }
 
-/* Neon border flicker animation */
-@keyframes neon-border-flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        border: 1px solid #39ff14;
-        box-shadow:
-            0 0 4px #39ff14,
-            0 0 11px #39ff14,
-            0 0 19px #39ff14,
-            0 0 40px #39ff14;
-    }
-    20%, 24%, 55% {
-        border: 1px solid rgba(57, 255, 20, 0.1);
-        box-shadow: none;
-    }
+/* Enhance links within the 'Featured Styles' section with neon effects for consistency */
+aside#styles a {
+    color: #39ff14; /* Bright neon green color */
+    text-decoration: none; /* Remove underline */
+    animation: neon-text-flicker 1.5s infinite; /* Neon flicker effect for links */
 }
 
-/* Footer styling */
-footer {
-    background-color: #000;
+/* List styling within the 'Featured Styles' section */
+aside#styles ul.features {
+    list-style: none; /* No bullet points for a clean look */
+    padding: 0; /* Remove padding */
+}
+
+aside#styles ul.features li {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif; /* Consistent font across the body */
+    line-height: 1.6;
+    color: #f1f1f1;
+    background-color: #1a1a1a;
+    background-image: url('./pic1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 60px;
+    scroll-behavior: smooth;
+}
+
+/* General settings for headers and navigation */
+header, nav, footer, aside, section, article {
+    font-family: 'Lato', sans-serif;
     color: #fff;
-    padding: 2rem 0;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    background-color: #1a1a1a; /* Dark background for all sections */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px; /* Rounded corners for all containers */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
 }
 
-footer a {
-    color: #bbdefb;
+/* Applying neon glow animations to all headings */
+h1, h2, h3, h4, h5, h6 {
+    animation: neon-text-glow 1.5s ease-in-out infinite alternate;
+}
+
+/* Styling links with neon effects */
+a {
+    color: #39ff14; /* Bright neon green for links */
     text-decoration: none;
-    transition: color 0.3s ease;
-    mix-blend-mode: difference;
+    animation: neon-text-flicker 1.5s infinite;
 }
 
-footer a:hover {
-    color: black;
-    background-color: #ffffff;
-}
 
-/* Specific GitHub star hover effect */
-.link-github svg {
-    fill: #ffffff; /* Initial color is white */
-    transition: fill 0.3s ease;
-}
 
-.link-github:hover svg {
-    fill: #39ff14; /* Change to neon green on hover */
-    text-shadow:
-        0 0 4px #39ff14,
-        0 0 11px #39ff14,
-        0 0 19px #39ff14,
-        0 0 40px #39ff14,
-        0 0 80px #39ff14,
-        0 0 90px #39ff14,
-        0 0 100px #39ff14,
-        0 0 150px #39ff14; /* Adding a glowing neon effect */
-}
